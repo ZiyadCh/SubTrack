@@ -20,13 +20,13 @@ public class AbonnementDao {
         UUID.randomUUID(), "Disney+", 11.99, "2026-03-01", "2026-09-30", Statut.SUSPENDU));
   }
 
-  public void add(Abonnement a) {
-    abonnements.add(a);
+  public void add(Abonnement abonnement) {
+    abonnements.add(abonnement);
   }
 
   public Abonnement findById(UUID id) {
     return abonnements.stream()
-        .filter(a -> a.getId().equals(id))
+        .filter(n -> n.getId().equals(id))
         .findFirst()
         .orElse(null);
   }
@@ -35,9 +35,9 @@ public class AbonnementDao {
     return abonnements;
   }
 
-  public void update(Abonnement a) {
-    abonnements.removeIf(existing -> existing.getId().equals(a.getId()));
-    abonnements.add(a);
+  public void update(Abonnement abonnement) {
+    abonnements.removeIf(n -> n.getId().equals(abonnement.getId()));
+    abonnements.add(abonnement);
   }
 
   public void delete(UUID id) {

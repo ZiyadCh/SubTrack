@@ -10,6 +10,10 @@ public class AbonnementService {
     abonnementDao.add(abonnement);
   }
 
+  public void modifyAbonnement(Abonnement abonnement) {
+    abonnementDao.update(abonnement);
+  }
+
   public void listAbonnement() {
     abonnementDao.listAll().forEach(n -> System.out
         .println("nom Service:" + n.getNomService() + "\n" + "montant Mensueller:" + n.getMontantMesuelle() + "\n"

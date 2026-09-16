@@ -1,7 +1,71 @@
+import java.util.Scanner;
+import java.util.UUID;
+
+import models.Abonnement;
+import models.AbonnementAvecEngagement;
+import models.AbonnementSansEngagement;
+import models.Paiement;
+import models.Statut;
+import dao.AbonnementDao;
+import dao.PaiementDao;
+import services.AbonnementService;
 
 public class Main {
+  private static AbonnementService abonnementService = new AbonnementService();
+  public static Scanner scanner = new Scanner(System.in);
+
   public static void main(String[] args) {
 
+    while (true) {
+      System.out.println("┌────────────────────────────────┐");
+      System.out.println("│      Sélectionnez une action   │");
+      System.out.println("├────────────────────────────────┤");
+      System.out.println("│1❯ Lister les Abonnements       │");
+      System.out.println("│2❯ Ajouter un Abonnement        │");
+      System.out.println("│3❯ Modifier un Abonnement       │");
+      System.out.println("│4❯ Supprimer un Abonnement      │");
+      System.out.println("│5❯ Paiements                    │");
+      System.out.println("│6❯ Ajouter un Paiement          │");
+      System.out.println("│7❯ Quitter                      │");
+      System.out.println("└────────────────────────────────┘");
+      switch (scanner.nextLine()) {
+        case "1":
+          abonnementService.listAbonnement();
+          break;
+        case "2":
+          addAbonnementUI();
+          break;
+
+        case "7":
+          System.out.println("Au revoir !");
+          return;
+
+        default:
+          System.out.println("Choisir un nombre correspondant!!");
+          break;
+      }
+    }
   }
 
+  private static void addAbonnementUI() {
+    System.out.println("Nom du service:");
+    String nomService = scanner.nextLine();
+
+    System.out.println("Montant mensuel:");
+    Double montantMensuel = Double.parseDouble(scanner.nextLine());
+
+    System.out.println("Date de debut :");
+    String dateDebut = scanner.nextLine();
+
+    System.out.println("Date de fin :");
+    String dateFin = scanner.nextLine();
+
+    System.out.println("Statut (ACTIVE, SUSPENDU, RESILIE):");
+    String statut = scanner.nextLine();
+
+    Abonnement abonnement = new AbonnementSansEngagement(
+        UUID.randomUUID(), nomService, montantMensuel, dateDebut, dateFin, Statut.valueOf(statut));
+
+    abonnementService.addAbonnement(abonnement);
+  }
 }

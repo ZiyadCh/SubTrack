@@ -2,7 +2,7 @@ package models;
 
 import java.util.UUID;
 
-abstract class Abonnement {
+public abstract class Abonnement {
   protected UUID id;
   protected String nomService;
   protected Double montantMesuelle;

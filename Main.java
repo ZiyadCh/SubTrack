@@ -13,15 +13,15 @@ public class Main {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     System.out.println("┌────────────────────────────────┐");
-    System.out.println("│       select une action:       │");
+    System.out.println("│      Sélectionnez une action   │");
     System.out.println("├────────────────────────────────┤");
-    System.out.println("│1❯ Lister les Abonnement           │");
-    System.out.println("│2❯ Ajouter un Abonnement           │");
-    System.out.println("│3❯ Modifier un Abonnement           │");
-    System.out.println("│4❯ Supprimer un Abonnement           │");
-    System.out.println("│5❯ Afficher Paiements d'un Abonnement           │");
-    System.out.println("│6❯ Ajouter un Paiements d'un Abonnement           │");
-    System.out.println("│7❯ quitter                      │");
+    System.out.println("│1❯ Lister les Abonnements       │");
+    System.out.println("│2❯ Ajouter un Abonnement        │");
+    System.out.println("│3❯ Modifier un Abonnement       │");
+    System.out.println("│4❯ Supprimer un Abonnement      │");
+    System.out.println("│5❯ Paiements                    │");
+    System.out.println("│6❯ Ajouter un Paiement          │");
+    System.out.println("│7❯ Quitter                      │");
     System.out.println("└────────────────────────────────┘");
     switch (scanner.nextLine()) {
       case "1":

@@ -31,4 +31,10 @@ public class AbonnementDao {
   public void delete(UUID id) {
     abonnements.removeIf(a -> a.getId().equals(id));
   }
+
+  public void list() {
+    abonnements.forEach(a -> System.out.println(
+        "id: " + a.getId() + " | nomService: " + a.getNomService() + " | montantMesuelle: " + a.getMontantMesuelle()
+            + " | dateDebut: " + a.getDateDebut() + " | dateFin: " + a.getDateFin() + " | statut: " + a.getStatut()));
+  }
 }

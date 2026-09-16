@@ -9,4 +9,7 @@ public class AbonnementService {
   public void addAbonnement(Abonnement abonnement) {
     abonnementDao.add(abonnement);
   }
+
+  public void listAbonnement() {
+  }
 }

@@ -35,6 +35,9 @@ public class Main {
         case "2":
           addAbonnementUI();
           break;
+        case "3":
+          modifyAbonnementUI();
+          break;
 
         case "7":
           System.out.println("Au revoir !");
@@ -67,5 +70,12 @@ public class Main {
         UUID.randomUUID(), nomService, montantMensuel, dateDebut, dateFin, Statut.valueOf(statut));
 
     abonnementService.addAbonnement(abonnement);
+  }
+
+  private static void modifyAbonnementUI() {
+    System.out.println("ID d'abonnemnt");
+    String id = scanner.nextLine();
+    abonnementService.modifyAbonnement(id);
+
   }
 }

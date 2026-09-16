@@ -1,7 +1,9 @@
 package services;
 
-import models.Abonnement;
+import java.util.UUID;
+
 import dao.AbonnementDao;
+import models.Abonnement;
 
 public class AbonnementService {
   private static AbonnementDao abonnementDao = new AbonnementDao();
@@ -10,7 +12,8 @@ public class AbonnementService {
     abonnementDao.add(abonnement);
   }
 
-  public void modifyAbonnement(Abonnement abonnement) {
+  public void modifyAbonnement(String id) {
+    Abonnement abonnement = abonnementDao.findById(id);
     abonnementDao.update(abonnement);
   }
 

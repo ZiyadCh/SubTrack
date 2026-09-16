@@ -5,15 +5,16 @@ import models.Abonnement;
 import models.AbonnementAvecEngagement;
 import models.AbonnementSansEngagement;
 import models.Paiement;
+import models.Statut;
 import dao.AbonnementDao;
 import dao.PaiementDao;
 import services.AbonnementService;
 
 public class Main {
   private static AbonnementService abonnementService = new AbonnementService();
+  public static Scanner scanner = new Scanner(System.in);
 
   public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
 
     while (true) {
       System.out.println("┌────────────────────────────────┐");
@@ -31,15 +32,40 @@ public class Main {
         case "1":
           abonnementService.listAbonnement();
           break;
+        case "2":
+          addAbonnementUI();
+          break;
 
         case "7":
           System.out.println("Au revoir !");
           return;
 
         default:
+          System.out.println("Choisir un nombre correspondant!!");
           break;
       }
     }
   }
 
+  private static void addAbonnementUI() {
+    System.out.println("Nom du service:");
+    String nomService = scanner.nextLine();
+
+    System.out.println("Montant mensuel:");
+    Double montantMensuel = Double.parseDouble(scanner.nextLine());
+
+    System.out.println("Date de debut :");
+    String dateDebut = scanner.nextLine();
+
+    System.out.println("Date de fin :");
+    String dateFin = scanner.nextLine();
+
+    System.out.println("Statut (ACTIVE, SUSPENDU, RESILIE):");
+    String statut = scanner.nextLine();
+
+    Abonnement abonnement = new AbonnementSansEngagement(
+        UUID.randomUUID(), nomService, montantMensuel, dateDebut, dateFin, Statut.valueOf(statut));
+
+    abonnementService.addAbonnement(abonnement);
+  }
 }

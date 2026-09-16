@@ -1,32 +1,34 @@
 package dao;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
 import java.util.UUID;
 
 import models.Abonnement;
 
 public class AbonnementDao {
-  private static final Map<UUID, Abonnement> abonnements = new HashMap<>();
+  private static final HashSet<Abonnement> abonnements = new HashSet<>();
 
   public void add(Abonnement a) {
-    abonnements.put(a.getId(), a);
+    abonnements.add(a);
   }
 
   public Abonnement findById(UUID id) {
-    return abonnements.get(id);
+    return abonnements.stream()
+        .filter(a -> a.getId().equals(id))
+        .findFirst()
+        .orElse(null);
   }
 
-  public Collection<Abonnement> findAll() {
-    return abonnements.values();
+  public HashSet<Abonnement> findAll() {
+    return abonnements;
   }
 
   public void update(Abonnement a) {
-    abonnements.put(a.getId(), a);
+    abonnements.removeIf(existing -> existing.getId().equals(a.getId()));
+    abonnements.add(a);
   }
 
   public void delete(UUID id) {
-    abonnements.remove(id);
+    abonnements.removeIf(a -> a.getId().equals(id));
   }
 }

@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import dao.AbonnementDao;
 import models.Abonnement;
+import models.AbonnementAvecEngagement;
 
 public class AbonnementService {
   private static AbonnementDao abonnementDao = new AbonnementDao();
@@ -22,9 +23,17 @@ public class AbonnementService {
   }
 
   public void listAbonnement() {
-    abonnementDao.listAll().forEach(n -> System.out
-        .println("id:" + n.getId() + "\n" + "nom Service:" + n.getNomService() + "\n"
-            + "montant Mensueller:" + n.getMontantMesuelle() + "\n" + "date Debut:" + n.getDateDebut() + "\n"
-            + "date Fin:" + n.getDateFin() + "\n" + "statut:" + n.getStatut() + "\n"));
+    abonnementDao.listAll().forEach(n -> System.out.println(
+        "Id: " + n.getId() + "\n"
+            + "Nom service: " + n.getNomService() + "\n"
+            + "Montant mensuel: " + n.getMontantMesuelle() + "\n"
+            + "Date debut: " + n.getDateDebut() + "\n"
+            + "Date fin: " + n.getDateFin() + "\n"
+            + "Statut: " + n.getStatut() + "\n"
+            + "Duree engagement en mois: "
+            + (n instanceof AbonnementAvecEngagement
+                ? ((AbonnementAvecEngagement) n).getDureeEngagementMois()
+                : null)
+            + "\n"));
   }
 }

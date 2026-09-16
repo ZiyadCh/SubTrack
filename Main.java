@@ -113,7 +113,7 @@ public class Main {
     }
 
     if (abonnement instanceof AbonnementAvecEngagement) {
-      System.out.println("Nouvelle duree d'engagement en mois (vide = inchanger):");
+      System.out.println("Nouvelle duree d'engagement en mois :");
       String duree = scanner.nextLine();
       if (!duree.isEmpty()) {
         ((AbonnementAvecEngagement) abonnement).setDureeEngagementMois(Integer.parseInt(duree));

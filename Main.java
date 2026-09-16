@@ -10,6 +10,8 @@ import dao.PaiementDao;
 import services.AbonnementService;
 
 public class Main {
+  private static AbonnementService abonnementService = new AbonnementService();
+
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     System.out.println("┌────────────────────────────────┐");
@@ -25,7 +27,7 @@ public class Main {
     System.out.println("└────────────────────────────────┘");
     switch (scanner.nextLine()) {
       case "1":
-
+        abonnementService.listAbonnement();
         break;
 
       case "2":

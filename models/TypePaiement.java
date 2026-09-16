@@ -1,6 +1,6 @@
 package models;
 
-enum TypePaiement {
+public enum TypePaiement {
   PAYE,
   NONPAYE,
   RETARD

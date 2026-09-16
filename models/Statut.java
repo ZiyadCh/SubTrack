@@ -1,6 +1,6 @@
 package models;
 
-enum Statut {
+public enum Statut {
   ACTIVE,
   SUSPENDU,
   RESILIE

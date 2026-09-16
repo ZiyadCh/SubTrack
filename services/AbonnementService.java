@@ -11,5 +11,9 @@ public class AbonnementService {
   }
 
   public void listAbonnement() {
+    abonnementDao.listAll().forEach(n -> System.out
+        .println("nom Service:" + n.getNomService() + "\n" + "montant Mensueller:" + n.getMontantMesuelle() + "\n"
+            + "date Debut:" + n.getDateDebut() + "\n" + "date Fin:" + n.getDateFin() + "\n" + "statut:" + n.getStatut()
+            + "\n"));
   }
 }

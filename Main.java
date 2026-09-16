@@ -75,7 +75,7 @@ public class Main {
   private static void modifyAbonnementUI() {
     System.out.println("ID d'abonnemnt");
     String id = scanner.nextLine();
-    abonnementService.modifyAbonnement(id);
-
+    abonnementService.modifyAbonnement(UUID.fromString(id));
+    System.out.println("modifie avec success");
   }
 }

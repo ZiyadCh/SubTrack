@@ -24,7 +24,7 @@ public class AbonnementDao {
     abonnements.add(abonnement);
   }
 
-  public Abonnement findById(String id) {
+  public Abonnement findById(UUID id) {
     return abonnements.stream()
         .filter(n -> n.getId().equals(id))
         .findFirst()

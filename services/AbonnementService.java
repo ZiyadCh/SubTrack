@@ -8,6 +8,10 @@ import models.Abonnement;
 public class AbonnementService {
   private static AbonnementDao abonnementDao = new AbonnementDao();
 
+  public Abonnement findById(UUID id) {
+    return abonnementDao.findById(id);
+  }
+
   public void addAbonnement(Abonnement abonnement) {
     abonnementDao.add(abonnement);
   }

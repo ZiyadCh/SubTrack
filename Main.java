@@ -75,7 +75,52 @@ public class Main {
   private static void modifyAbonnementUI() {
     System.out.println("ID d'abonnemnt");
     String id = scanner.nextLine();
-    abonnementService.modifyAbonnement(UUID.fromString(id));
+    Abonnement abonnement = abonnementService.findById(UUID.fromString(id));
+    if (abonnement == null) {
+      System.out.println("Aucun abonnement trouve.");
+      return;
+    }
+
+    System.out.println("Entrer Nouveau donnes(laisser vide pour Aucun changement)");
+    System.out.println("Nouveau nom du service :");
+    String nomService = scanner.nextLine();
+    if (!nomService.isEmpty()) {
+      abonnement.setNomService(nomService);
+    }
+
+    System.out.println("Nouveau montant mensuel :");
+    String montantMensuel = scanner.nextLine();
+    if (!montantMensuel.isEmpty()) {
+      abonnement.setMontantMesuelle(Double.parseDouble(montantMensuel));
+    }
+
+    System.out.println("Nouvelle date de debut :");
+    String dateDebut = scanner.nextLine();
+    if (!dateDebut.isEmpty()) {
+      abonnement.setDateDebut(dateDebut);
+    }
+
+    System.out.println("Nouvelle date de fin :");
+    String dateFin = scanner.nextLine();
+    if (!dateFin.isEmpty()) {
+      abonnement.setDateFin(dateFin);
+    }
+
+    System.out.println("Nouveau statut :");
+    String statut = scanner.nextLine();
+    if (!statut.isEmpty()) {
+      abonnement.setStatut(Statut.valueOf(statut));
+    }
+
+    if (abonnement instanceof AbonnementAvecEngagement) {
+      System.out.println("Nouvelle duree d'engagement en mois (vide = inchanger):");
+      String duree = scanner.nextLine();
+      if (!duree.isEmpty()) {
+        ((AbonnementAvecEngagement) abonnement).setDureeEngagementMois(Integer.parseInt(duree));
+      }
+    }
+
+    abonnementService.modifyAbonnement(abonnement.getId());
     System.out.println("modifie avec success");
   }
 }

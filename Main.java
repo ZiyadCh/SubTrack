@@ -51,6 +51,8 @@ public class Main {
   }
 
   private static void addAbonnementUI() {
+    int type = 2;
+
     System.out.println("Nom du service:");
     String nomService = scanner.nextLine();
 
@@ -65,9 +67,35 @@ public class Main {
 
     System.out.println("Statut (ACTIVE, SUSPENDU, RESILIE):");
     String statut = scanner.nextLine();
+    int dureeEngagement = 0;
 
-    Abonnement abonnement = new AbonnementSansEngagement(
-        UUID.randomUUID(), nomService, montantMensuel, dateDebut, dateFin, Statut.valueOf(statut));
+    System.out.println("Type d'abonnement:");
+    System.out.println("1❯ Avec engagement");
+    System.out.println("2❯ Sans engagement");
+    switch (scanner.nextLine()) {
+      case "1":
+        type = 1;
+        System.out.println("Duree d'engagement:");
+        dureeEngagement = scanner.nextInt();
+        scanner.nextLine();
+        break;
+
+      case "2":
+        type = 2;
+        break;
+
+      default:
+        break;
+    }
+    Abonnement abonnement = null;
+
+    if (type == 2) {
+      abonnement = new AbonnementSansEngagement(
+          UUID.randomUUID(), nomService, montantMensuel, dateDebut, dateFin, Statut.valueOf(statut));
+    } else if (type == 1) {
+      abonnement = new AbonnementAvecEngagement(
+          UUID.randomUUID(), nomService, montantMensuel, dateDebut, dateFin, Statut.valueOf(statut), dureeEngagement);
+    }
 
     abonnementService.addAbonnement(abonnement);
   }

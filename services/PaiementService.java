@@ -30,4 +30,8 @@ public class PaiementService {
     Paiement paiement = paiementDao.findById(id);
     paiementDao.update(paiement);
   }
+
+  public void supprimerPaiement(UUID id) {
+    paiementDao.delete(id);
+  }
 }

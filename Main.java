@@ -76,6 +76,10 @@ public class Main {
           modifyPaiementUI();
           break;
 
+        case "8":
+          supprimerPaiementUI();
+          break;
+
         case "9":
           System.out.println("Au revoir !");
           return;
@@ -192,6 +196,12 @@ public class Main {
     System.out.println("Id d'abonnement a supprimer:");
     String id = scanner.nextLine();
     abonnementService.supprimerAbonnement(UUID.fromString(id));
+  }
+
+  private static void supprimerPaiementUI() {
+    System.out.println("Id du paiement a supprimer:");
+    String id = scanner.nextLine();
+    paiementService.supprimerPaiement(UUID.fromString(id));
   }
 
   private static void addPaiementUI() {

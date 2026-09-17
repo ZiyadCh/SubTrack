@@ -242,11 +242,11 @@ public class Main {
       paiement.setTypePaiement(TypePaiement.valueOf(typePaiement));
     }
 
-    System.out.println("Nouvel id de l'abonnement :");
-    String abonnementId = scanner.nextLine();
-    if (!abonnementId.isEmpty()) {
-      paiement.setAbonnementId(UUID.fromString(abonnementId));
-    }
+    // System.out.println("Nouvel id de l'abonnement :");
+    // String abonnementId = scanner.nextLine();
+    // if (!abonnementId.isEmpty()) {
+    // paiement.setAbonnementId(UUID.fromString(abonnementId));
+    // }
 
     paiementService.modifyPaiement(paiement.getId());
     System.out.println("modifie avec success");

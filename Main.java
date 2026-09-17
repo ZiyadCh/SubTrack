@@ -30,7 +30,18 @@ public class Main {
       System.out.println("└────────────────────────────────┘");
       switch (scanner.nextLine()) {
         case "1":
-          abonnementService.listAbonnement();
+          abonnementService.listAbonnement().forEach(n -> System.out.println(
+              "Id: " + n.getId() + "\n"
+                  + "Nom service: " + n.getNomService() + "\n"
+                  + "Montant mensuel: " + n.getMontantMesuelle() + "\n"
+                  + "Date debut: " + n.getDateDebut() + "\n"
+                  + "Date fin: " + n.getDateFin() + "\n"
+                  + "Statut: " + n.getStatut() + "\n"
+                  + "Duree engagement en mois: "
+                  + (n instanceof AbonnementAvecEngagement
+                      ? ((AbonnementAvecEngagement) n).getDureeEngagementMois()
+                      : null)
+                  + "\n"));
           break;
         case "2":
           addAbonnementUI();

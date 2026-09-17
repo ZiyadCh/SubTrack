@@ -9,9 +9,11 @@ import models.Statut;
 import dao.AbonnementDao;
 import dao.PaiementDao;
 import services.AbonnementService;
+import services.PaiementService;
 
 public class Main {
   private static AbonnementService abonnementService = new AbonnementService();
+  private static PaiementService paiementService = new PaiementService();
   public static Scanner scanner = new Scanner(System.in);
 
   public static void main(String[] args) {
@@ -49,9 +51,18 @@ public class Main {
         case "3":
           modifyAbonnementUI();
           break;
-
         case "4":
           supprimerAbonnementUI();
+          break;
+
+        case "5":
+          paiementService.listPaiements().forEach(p -> System.out.println(
+              "Id: " + p.getId() + "\n"
+                  + "Id abonnement: " + p.getIdAbonnement() + "\n"
+                  + "Date echeance: " + p.getDateEcheance() + "\n"
+                  + "Date paiement: " + p.getDatePaiement() + "\n"
+                  + "Type paiement: " + p.getTypePaiement() + "\n"
+                  + "Abonnement id: " + p.getAbonnementId() + "\n"));
           break;
 
         case "7":

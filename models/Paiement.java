@@ -8,6 +8,7 @@ public class Paiement {
   protected String dateEcheance;
   protected String datePaiement;
   protected TypePaiement typePaiement;
+  protected UUID abonnementId;
 
   public Paiement(UUID id, String idAbonnement, String dateEcheance, String datePaiement, TypePaiement typePaiement,
       UUID abonnementId) {
@@ -18,8 +19,6 @@ public class Paiement {
     this.typePaiement = typePaiement;
     this.abonnementId = abonnementId;
   }
-
-  protected UUID abonnementId;
 
   public UUID getAbonnementId() {
     return abonnementId;

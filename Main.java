@@ -20,17 +20,17 @@ public class Main {
   public static void main(String[] args) {
 
     while (true) {
-      System.out.println("┌────────────────────────────────┐");
-      System.out.println("│      Selectionnez une action   │");
-      System.out.println("├────────────────────────────────┤");
-      System.out.println("│1❯ Lister les Abonnements       │");
-      System.out.println("│2❯ Ajouter un Abonnement        │");
-      System.out.println("│3❯ Modifier un Abonnement       │");
-      System.out.println("│4❯ Supprimer un Abonnement      │");
-      System.out.println("│5❯ Lister les Paiements d'un abonnemnt                   │");
-      System.out.println("│6❯ Ajouter un Paiement          │");
-      System.out.println("│7❯ Quitter                      │");
-      System.out.println("└────────────────────────────────┘");
+      System.out.println("┌─────────────────────────────────────┐");
+      System.out.println("│      Selectionnez une action        │");
+      System.out.println("├─────────────────────────────────────┤");
+      System.out.println("│1❯ Lister les Abonnements            │");
+      System.out.println("│2❯ Ajouter un Abonnement             │");
+      System.out.println("│3❯ Modifier un Abonnement            │");
+      System.out.println("│4❯ Supprimer un Abonnement           │");
+      System.out.println("│5❯ Lister les Paiements d'un abonemnt│");
+      System.out.println("│6❯ Ajouter un Paiement               │");
+      System.out.println("│7❯ Quitter                           │");
+      System.out.println("└─────────────────────────────────────┘");
       switch (scanner.nextLine()) {
         case "1":
           abonnementService.listAbonnement().forEach(n -> System.out.println(

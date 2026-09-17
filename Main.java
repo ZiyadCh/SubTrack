@@ -29,7 +29,9 @@ public class Main {
       System.out.println("│4❯ Supprimer un Abonnement           │");
       System.out.println("│5❯ Lister les Paiements d'un abonemnt│");
       System.out.println("│6❯ Ajouter un Paiement               │");
-      System.out.println("│7❯ Quitter                           │");
+      System.out.println("│7❯ Modifier un Paiement              │");
+      System.out.println("│8❯ Supprimer un Paiement             │");
+      System.out.println("│9❯ Quitter                           │");
       System.out.println("└─────────────────────────────────────┘");
       switch (scanner.nextLine()) {
         case "1":
@@ -70,7 +72,7 @@ public class Main {
         case "6":
           addPaiementUI();
           break;
-        case "7":
+        case "9":
           System.out.println("Au revoir !");
           return;
 

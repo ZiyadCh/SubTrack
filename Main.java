@@ -6,6 +6,7 @@ import models.AbonnementAvecEngagement;
 import models.AbonnementSansEngagement;
 import models.Paiement;
 import models.Statut;
+import models.TypePaiement;
 import dao.AbonnementDao;
 import dao.PaiementDao;
 import services.AbonnementService;
@@ -64,6 +65,9 @@ public class Main {
                   + "Type paiement: " + p.getTypePaiement() + "\n"));
           break;
 
+        case "6":
+          addPaiementUI();
+          break;
         case "7":
           System.out.println("Au revoir !");
           return;
@@ -181,5 +185,24 @@ public class Main {
     System.out.println("Id d'abonnement a supprimer:");
     String id = scanner.nextLine();
     abonnementService.supprimerAbonnement(UUID.fromString(id));
+  }
+
+  private static void addPaiementUI() {
+    System.out.println("Id de l'abonnement:");
+    UUID abonnementId = UUID.fromString(scanner.nextLine());
+
+    System.out.println("Date d'echeance :");
+    String dateEcheance = scanner.nextLine();
+
+    System.out.println("Date de paiement :");
+    String datePaiement = scanner.nextLine();
+
+    System.out.println("Type de paiement (PAYE, NONPAYE, RETARD):");
+    String typePaiement = scanner.nextLine();
+
+    Paiement paiement = new Paiement(
+        UUID.randomUUID(), dateEcheance, datePaiement, TypePaiement.valueOf(typePaiement), abonnementId);
+
+    paiementService.addPaiement(paiement);
   }
 }

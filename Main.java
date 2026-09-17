@@ -21,13 +21,13 @@ public class Main {
 
     while (true) {
       System.out.println("┌────────────────────────────────┐");
-      System.out.println("│      Sélectionnez une action   │");
+      System.out.println("│      Selectionnez une action   │");
       System.out.println("├────────────────────────────────┤");
       System.out.println("│1❯ Lister les Abonnements       │");
       System.out.println("│2❯ Ajouter un Abonnement        │");
       System.out.println("│3❯ Modifier un Abonnement       │");
       System.out.println("│4❯ Supprimer un Abonnement      │");
-      System.out.println("│5❯ Paiements                    │");
+      System.out.println("│5❯ Lister les Paiements d'un abonnemnt                   │");
       System.out.println("│6❯ Ajouter un Paiement          │");
       System.out.println("│7❯ Quitter                      │");
       System.out.println("└────────────────────────────────┘");
@@ -57,7 +57,9 @@ public class Main {
           break;
 
         case "5":
-          paiementService.listPaiements().forEach(p -> System.out.println(
+          System.out.println("Id de l'abonnement:");
+          UUID abonnementId = UUID.fromString(scanner.nextLine());
+          paiementService.listPaiements(abonnementId).forEach(p -> System.out.println(
               "Id: " + p.getId() + "\n"
                   + "Id abonnement: " + p.getAbonnementId() + "\n"
                   + "Date echeance: " + p.getDateEcheance() + "\n"

@@ -1,6 +1,9 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.UUID;
+import java.util.stream.Stream;
 
 import dao.PaiementDao;
 import models.Paiement;
@@ -8,8 +11,11 @@ import models.Paiement;
 public class PaiementService {
   private static PaiementDao paiementDao = new PaiementDao();
 
-  public ArrayList<Paiement> listPaiements() {
-    return new ArrayList<>(paiementDao.listAll());
+  public Stream<Paiement> listPaiements(UUID abonnementId) {
+    return new ArrayList<Paiement>(paiementDao.listAll())
+        .stream()
+        .filter(n -> n.getAbonnementId().equals(
+            abonnementId));
   }
 
   public void addPaiement(Paiement paiement) {

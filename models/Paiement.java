@@ -9,6 +9,26 @@ public class Paiement {
   protected String datePaiement;
   protected TypePaiement typePaiement;
 
+  public Paiement(UUID id, String idAbonnement, String dateEcheance, String datePaiement, TypePaiement typePaiement,
+      UUID abonnementId) {
+    this.id = id;
+    this.idAbonnement = idAbonnement;
+    this.dateEcheance = dateEcheance;
+    this.datePaiement = datePaiement;
+    this.typePaiement = typePaiement;
+    this.abonnementId = abonnementId;
+  }
+
+  protected UUID abonnementId;
+
+  public UUID getAbonnementId() {
+    return abonnementId;
+  }
+
+  public void setAbonnementId(UUID abonnementId) {
+    this.abonnementId = abonnementId;
+  }
+
   public UUID getId() {
     return id;
   }

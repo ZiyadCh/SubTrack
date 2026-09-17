@@ -14,7 +14,7 @@ public class PaiementDao {
 
   public Paiement findById(UUID id) {
     return paiements.stream()
-        .filter(p -> p.getId().equals(id))
+        .filter(n -> n.getId().equals(id))
         .findFirst()
         .orElse(null);
   }
@@ -23,9 +23,9 @@ public class PaiementDao {
     return paiements;
   }
 
-  public void update(Paiement p) {
-    paiements.removeIf(existing -> existing.getId().equals(p.getId()));
-    paiements.add(p);
+  public void update(Paiement paiement) {
+    paiements.removeIf(n -> n.getId().equals(n.getId()));
+    paiements.add(paiement);
   }
 
   public void delete(UUID id) {

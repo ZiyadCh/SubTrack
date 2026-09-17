@@ -26,4 +26,8 @@ public class AbonnementService {
   public ArrayList<Abonnement> listAbonnement() {
     return new ArrayList<>(abonnementDao.listAll());
   }
+
+  public void supprimerAbonnement(UUID id) {
+    abonnementDao.delete(id);
+  }
 }

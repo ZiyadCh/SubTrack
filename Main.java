@@ -50,6 +50,10 @@ public class Main {
           modifyAbonnementUI();
           break;
 
+        case "4":
+          supprimerAbonnementUI();
+          break;
+
         case "7":
           System.out.println("Au revoir !");
           return;
@@ -161,5 +165,11 @@ public class Main {
 
     abonnementService.modifyAbonnement(abonnement.getId());
     System.out.println("modifie avec success");
+  }
+
+  private static void supprimerAbonnementUI() {
+    System.out.println("Id d'abonnement a supprimer:");
+    String id = scanner.nextLine();
+    abonnementService.supprimerAbonnement(UUID.fromString(id));
   }
 }

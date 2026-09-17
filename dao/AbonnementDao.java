@@ -41,7 +41,7 @@ public class AbonnementDao {
   }
 
   public void delete(UUID id) {
-    abonnements.removeIf(a -> a.getId().equals(id));
+    abonnements.removeIf(n -> n.getId().equals(id));
   }
 
 }

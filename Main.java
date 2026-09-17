@@ -63,7 +63,6 @@ public class Main {
           UUID abonnementId = UUID.fromString(scanner.nextLine());
           paiementService.listPaiements(abonnementId).forEach(p -> System.out.println(
               "Id: " + p.getId() + "\n"
-                  + "Id abonnement: " + p.getAbonnementId() + "\n"
                   + "Date echeance: " + p.getDateEcheance() + "\n"
                   + "Date paiement: " + p.getDatePaiement() + "\n"
                   + "Type paiement: " + p.getTypePaiement() + "\n"));

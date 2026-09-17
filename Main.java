@@ -72,10 +72,14 @@ public class Main {
         case "6":
           addPaiementUI();
           break;
+
+        case "7":
+          modifyPaiementUI();
+          break;
+
         case "9":
           System.out.println("Au revoir !");
           return;
-
         default:
           System.out.println("Choisir un nombre correspondant!!");
           break;
@@ -208,5 +212,43 @@ public class Main {
         UUID.randomUUID(), dateEcheance, datePaiement, TypePaiement.valueOf(typePaiement), abonnementId);
 
     paiementService.addPaiement(paiement);
+  }
+
+  private static void modifyPaiementUI() {
+    System.out.println("ID du paiement");
+    String id = scanner.nextLine();
+    Paiement paiement = paiementService.findById(UUID.fromString(id));
+    if (paiement == null) {
+      System.out.println("Aucun paiement trouve.");
+      return;
+    }
+
+    System.out.println("Entrer Nouveau donnes(laisser vide pour Aucun changement)");
+    System.out.println("Nouvelle date d'echeance :");
+    String dateEcheance = scanner.nextLine();
+    if (!dateEcheance.isEmpty()) {
+      paiement.setDateEcheance(dateEcheance);
+    }
+
+    System.out.println("Nouvelle date de paiement :");
+    String datePaiement = scanner.nextLine();
+    if (!datePaiement.isEmpty()) {
+      paiement.setDatePaiement(datePaiement);
+    }
+
+    System.out.println("Nouveau type de paiement (PAYE, NONPAYE, RETARD):");
+    String typePaiement = scanner.nextLine();
+    if (!typePaiement.isEmpty()) {
+      paiement.setTypePaiement(TypePaiement.valueOf(typePaiement));
+    }
+
+    System.out.println("Nouvel id de l'abonnement :");
+    String abonnementId = scanner.nextLine();
+    if (!abonnementId.isEmpty()) {
+      paiement.setAbonnementId(UUID.fromString(abonnementId));
+    }
+
+    paiementService.modifyPaiement(paiement.getId());
+    System.out.println("modifie avec success");
   }
 }

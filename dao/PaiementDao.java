@@ -11,7 +11,8 @@ public class PaiementDao {
 
   static {
     Paiement p1 = new Paiement(
-        UUID.randomUUID(), "2026-02-01", "2026-02-01", TypePaiement.PAYE, UUID.randomUUID());
+        UUID.randomUUID(), "2026-02-01", "2026-02-01", TypePaiement.PAYE,
+        UUID.fromString("123e4567-e89b-42d3-a456-556642440000"));
     paiements.add(p1);
 
     Paiement p2 = new Paiement(
@@ -43,7 +44,7 @@ public class PaiementDao {
   }
 
   public void update(Paiement paiement) {
-    paiements.removeIf(n -> n.getId().equals(n.getId()));
+    paiements.removeIf(n -> n.getId().equals(paiement.getId()));
     paiements.add(paiement);
   }
 

@@ -13,7 +13,8 @@ public class AbonnementDao {
 
   static {
     abonnements.add(new AbonnementSansEngagement(
-        UUID.randomUUID(), "Netflix", 15.99, "2026-01-01", "2026-12-31", Statut.ACTIVE));
+        UUID.fromString("123e4567-e89b-42d3-a456-556642440000"), "Netflix", 15.99, "2026-01-01", "2026-12-31",
+        Statut.ACTIVE));
     abonnements.add(new AbonnementAvecEngagement(
         UUID.randomUUID(), "Spotify", 9.99, "2026-01-01", "2026-06-30", Statut.ACTIVE, 12));
     abonnements.add(new AbonnementSansEngagement(

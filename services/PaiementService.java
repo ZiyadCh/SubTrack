@@ -18,7 +18,16 @@ public class PaiementService {
             abonnementId));
   }
 
+  public Paiement findById(UUID id) {
+    return paiementDao.findById(id);
+  }
+
   public void addPaiement(Paiement paiement) {
     paiementDao.add(paiement);
+  }
+
+  public void modifyPaiement(UUID id) {
+    Paiement paiement = paiementDao.findById(id);
+    paiementDao.update(paiement);
   }
 }

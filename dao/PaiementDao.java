@@ -27,8 +27,8 @@ public class PaiementDao {
     return paiements;
   }
 
-  public void add(Paiement p) {
-    paiements.add(p);
+  public void add(Paiement paiement) {
+    paiements.add(paiement);
   }
 
   public Paiement findById(UUID id) {

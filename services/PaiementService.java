@@ -11,4 +11,8 @@ public class PaiementService {
   public ArrayList<Paiement> listPaiements() {
     return new ArrayList<>(paiementDao.listAll());
   }
+
+  public void addPaiement(Paiement paiement) {
+    paiementDao.add(paiement);
+  }
 }

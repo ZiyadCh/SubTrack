@@ -4,16 +4,13 @@ import java.util.UUID;
 
 public class Paiement {
   protected UUID id;
-  protected String idAbonnement;
   protected String dateEcheance;
   protected String datePaiement;
   protected TypePaiement typePaiement;
   protected UUID abonnementId;
 
-  public Paiement(UUID id, String idAbonnement, String dateEcheance, String datePaiement, TypePaiement typePaiement,
-      UUID abonnementId) {
+  public Paiement(UUID id, String dateEcheance, String datePaiement, TypePaiement typePaiement, UUID abonnementId) {
     this.id = id;
-    this.idAbonnement = idAbonnement;
     this.dateEcheance = dateEcheance;
     this.datePaiement = datePaiement;
     this.typePaiement = typePaiement;
@@ -34,14 +31,6 @@ public class Paiement {
 
   public void setId(UUID id) {
     this.id = id;
-  }
-
-  public String getIdAbonnement() {
-    return idAbonnement;
-  }
-
-  public void setIdAbonnement(String idAbonnement) {
-    this.idAbonnement = idAbonnement;
   }
 
   public String getDateEcheance() {

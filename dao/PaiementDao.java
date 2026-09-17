@@ -11,18 +11,15 @@ public class PaiementDao {
 
   static {
     Paiement p1 = new Paiement(
-        UUID.randomUUID(), "00000000-0000-0000-0000-000000000001",
-        "2026-02-01", "2026-02-01", TypePaiement.PAYE, UUID.randomUUID());
+        UUID.randomUUID(), "2026-02-01", "2026-02-01", TypePaiement.PAYE, UUID.randomUUID());
     paiements.add(p1);
 
     Paiement p2 = new Paiement(
-        UUID.randomUUID(), "00000000-0000-0000-0000-000000000002",
-        "2026-02-05", "2026-02-09", TypePaiement.RETARD, UUID.randomUUID());
+        UUID.randomUUID(), "2026-02-05", "2026-02-09", TypePaiement.RETARD, UUID.randomUUID());
     paiements.add(p2);
 
     Paiement p3 = new Paiement(
-        UUID.randomUUID(), "00000000-0000-0000-0000-000000000002",
-        "2026-03-05", null, TypePaiement.NONPAYE, UUID.randomUUID());
+        UUID.randomUUID(), "2026-03-05", null, TypePaiement.NONPAYE, UUID.randomUUID());
     paiements.add(p3);
   }
 

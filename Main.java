@@ -58,11 +58,10 @@ public class Main {
         case "5":
           paiementService.listPaiements().forEach(p -> System.out.println(
               "Id: " + p.getId() + "\n"
-                  + "Id abonnement: " + p.getIdAbonnement() + "\n"
+                  + "Id abonnement: " + p.getAbonnementId() + "\n"
                   + "Date echeance: " + p.getDateEcheance() + "\n"
                   + "Date paiement: " + p.getDatePaiement() + "\n"
-                  + "Type paiement: " + p.getTypePaiement() + "\n"
-                  + "Abonnement id: " + p.getAbonnementId() + "\n"));
+                  + "Type paiement: " + p.getTypePaiement() + "\n"));
           break;
 
         case "7":

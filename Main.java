@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -9,6 +10,7 @@ import models.Statut;
 import models.TypePaiement;
 import dao.AbonnementDao;
 import dao.PaiementDao;
+import exceptions.InvalidInputException;
 import services.AbonnementService;
 import services.PaiementService;
 
@@ -93,51 +95,60 @@ public class Main {
   private static void addAbonnementUI() {
     int type = 2;
 
-    System.out.println("Nom du service:");
-    String nomService = scanner.nextLine();
+    String nomService;
+    Double montantMensuel;
+    String dateDebut;
+    String dateFin;
+    String statut;
+    int dureeEngagement;
+    try {
+      System.out.println("Nom du service:");
+      nomService = scanner.nextLine();
 
-    System.out.println("Montant mensuel:");
-    Double montantMensuel = Double.parseDouble(scanner.nextLine());
+      System.out.println("Montant mensuel:");
+      montantMensuel = Double.parseDouble(scanner.nextLine());
 
-    System.out.println("Date de debut :");
-    String dateDebut = scanner.nextLine();
+      System.out.println("Date de debut :");
+      dateDebut = scanner.nextLine();
 
-    System.out.println("Date de fin :");
-    String dateFin = scanner.nextLine();
+      System.out.println("Date de fin :");
+      dateFin = scanner.nextLine();
 
-    System.out.println("Statut (ACTIVE, SUSPENDU, RESILIE):");
-    String statut = scanner.nextLine();
-    int dureeEngagement = 0;
+      System.out.println("Statut (ACTIVE, SUSPENDU, RESILIE):");
+      statut = scanner.nextLine().trim().toUpperCase();
+      dureeEngagement = 0;
 
-    System.out.println("Type d'abonnement:");
-    System.out.println("1❯ Avec engagement");
-    System.out.println("2❯ Sans engagement");
-    switch (scanner.nextLine()) {
-      case "1":
-        type = 1;
-        System.out.println("Duree d'engagement:");
-        dureeEngagement = scanner.nextInt();
-        scanner.nextLine();
-        break;
+      System.out.println("Type d'abonnement:");
+      System.out.println("1❯ Avec engagement");
+      System.out.println("2❯ Sans engagement");
+      switch (scanner.nextLine()) {
+        case "1":
+          type = 1;
+          System.out.println("Duree d'engagement:");
+          dureeEngagement = Integer.parseInt(scanner.nextLine());
+          break;
 
-      case "2":
-        type = 2;
-        break;
+        case "2":
+          type = 2;
+          break;
 
-      default:
-        break;
+        default:
+          break;
+      }
+
+      Abonnement abonnement = null;
+      if (type == 2) {
+        abonnement = new AbonnementSansEngagement(
+            UUID.randomUUID(), nomService, montantMensuel, dateDebut, dateFin, Statut.valueOf(statut));
+      } else if (type == 1) {
+        abonnement = new AbonnementAvecEngagement(
+            UUID.randomUUID(), nomService, montantMensuel, dateDebut, dateFin, Statut.valueOf(statut), dureeEngagement);
+      }
+
+      abonnementService.addAbonnement(abonnement);
+    } catch (IllegalArgumentException | InputMismatchException e) {
+      throw new InvalidInputException("input invalide! ressayer.");
     }
-    Abonnement abonnement = null;
-
-    if (type == 2) {
-      abonnement = new AbonnementSansEngagement(
-          UUID.randomUUID(), nomService, montantMensuel, dateDebut, dateFin, Statut.valueOf(statut));
-    } else if (type == 1) {
-      abonnement = new AbonnementAvecEngagement(
-          UUID.randomUUID(), nomService, montantMensuel, dateDebut, dateFin, Statut.valueOf(statut), dureeEngagement);
-    }
-
-    abonnementService.addAbonnement(abonnement);
   }
 
   private static void modifyAbonnementUI() {

@@ -22,6 +22,10 @@ public class PaiementService {
     return paiementDao.findById(id);
   }
 
+  public void sum(UUID id) {
+    listPaiements(id).mapToDouble(n -> n.getMontant).sum();
+  }
+
   public void addPaiement(Paiement paiement) {
     paiementDao.add(paiement);
   }

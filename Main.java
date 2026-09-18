@@ -33,7 +33,8 @@ public class Main {
       System.out.println("│6❯ Ajouter un Paiement               │");
       System.out.println("│7❯ Modifier un Paiement              │");
       System.out.println("│8❯ Supprimer un Paiement             │");
-      System.out.println("│9❯ Quitter                           │");
+      System.out.println("│9❯ Somme d'un Abonnement             │");
+      System.out.println("│10❯ Quitter                           │");
       System.out.println("└─────────────────────────────────────┘");
       switch (scanner.nextLine()) {
         case "1":
@@ -82,7 +83,7 @@ public class Main {
           supprimerPaiementUI();
           break;
 
-        case "9":
+        case "10":
           System.out.println("Au revoir !");
           return;
         default:

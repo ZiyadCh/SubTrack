@@ -1,16 +1,15 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.UUID;
 
+import exceptions.InvalidInputException;
 import models.Abonnement;
 import models.AbonnementAvecEngagement;
 import models.AbonnementSansEngagement;
 import models.Paiement;
 import models.Statut;
 import models.TypePaiement;
-import dao.AbonnementDao;
-import dao.PaiementDao;
-import exceptions.InvalidInputException;
 import services.AbonnementService;
 import services.PaiementService;
 
@@ -81,6 +80,10 @@ public class Main {
 
         case "8":
           supprimerPaiementUI();
+          break;
+
+        case "9":
+          System.out.println(paiementService.listPaiements("0"));
           break;
 
         case "10":

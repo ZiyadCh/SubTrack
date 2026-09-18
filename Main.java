@@ -83,7 +83,7 @@ public class Main {
           break;
 
         case "9":
-          System.out.println(paiementService.listPaiements("0"));
+          sumUI();
           break;
 
         case "10":
@@ -94,6 +94,13 @@ public class Main {
           break;
       }
     }
+  }
+
+  private static void sumUI() {
+    System.out.println("id d'abonnement");
+    String abonnementId = scanner.nextLine();
+    paiementService.listPaiements(UUID.fromString(abonnementId));
+
   }
 
   private static void addAbonnementUI() {

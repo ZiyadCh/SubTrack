@@ -32,8 +32,9 @@ public class Main {
       System.out.println("│6❯ Ajouter un Paiement               │");
       System.out.println("│7❯ Modifier un Paiement              │");
       System.out.println("│8❯ Supprimer un Paiement             │");
-      System.out.println("│9❯ Somme d'un Abonnement             │");
-      System.out.println("│10❯ Quitter                          │");
+      System.out.println("│9❯ Paiements manques                 │");
+      System.out.println("│10❯ Somme d'un Abonnement            │");
+      System.out.println("│11❯ Quitter                          │");
       System.out.println("└─────────────────────────────────────┘");
       switch (scanner.nextLine()) {
         case "1":
@@ -83,10 +84,14 @@ public class Main {
           break;
 
         case "9":
-          sumUI();
+          missedPaiementUI();
           break;
 
         case "10":
+          sumUI();
+          break;
+
+        case "11":
           System.out.println("Au revoir !");
           return;
         default:
@@ -94,6 +99,17 @@ public class Main {
           break;
       }
     }
+  }
+
+  private static void missedPaiementUI() {
+    System.out.println("id d'abonnement");
+    String abonnementId = scanner.nextLine();
+    abonnementService.manques(UUID.fromString(abonnementId)).forEach(p -> System.out.println(
+        "Id: " + p.getId() + "\n"
+            + "Date echeance: " + p.getDateEcheance() + "\n"
+            + "Date paiement: " + p.getDatePaiement() + "\n"
+            + "Statut: " + p.getPaiementStatut() + "\n"));
+
   }
 
   private static void sumUI() {

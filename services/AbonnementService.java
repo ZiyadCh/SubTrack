@@ -1,11 +1,12 @@
 package services;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import dao.AbonnementDao;
 import models.Abonnement;
+import models.Paiement;
 import models.PaiementStatut;
 
 public class AbonnementService {
@@ -38,11 +39,11 @@ public class AbonnementService {
 
   }
 
-  public Long manques(UUID id) {
+  public Stream<Paiement> manques(UUID id) {
     Abonnement abonnement = abonnementDao.findById(id);
     return paiementService.listPaiements(id)
-        .filter(n -> n.getPaiementStatut() == PaiementStatut.NONPAYE)
-        .count();
+        .filter(n -> n.getPaiementStatut() == PaiementStatut.NONPAYE);
+
   }
 
   public void supprimerAbonnement(UUID id) {

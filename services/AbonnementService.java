@@ -38,6 +38,15 @@ public class AbonnementService {
 
   }
 
+  public Double manques(UUID id) {
+    Abonnement abonnement = abonnementDao.findById(id);
+    return paiementService.listPaiements(id)
+        .filter(n -> n.getPaiementStatut() == PaiementStatut.NONPAYE)
+        .mapToDouble(n -> abonnement.getMontantMesuelle())
+        .sum();
+
+  }
+
   public void supprimerAbonnement(UUID id) {
     abonnementDao.delete(id);
   }

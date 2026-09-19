@@ -34,7 +34,8 @@ public class Main {
       System.out.println("│8❯ Supprimer un Paiement             │");
       System.out.println("│9❯ Paiements manques                 │");
       System.out.println("│10❯ Somme d'un Abonnement            │");
-      System.out.println("│11❯ Quitter                          │");
+      System.out.println("│11❯ 3 derniers Paiements             │");
+      System.out.println("│12❯ Quitter                          │");
       System.out.println("└─────────────────────────────────────┘");
       switch (scanner.nextLine()) {
         case "1":
@@ -92,6 +93,10 @@ public class Main {
           break;
 
         case "11":
+          derniersPaiementsUI();
+          break;
+
+        case "12":
           System.out.println("Au revoir !");
           return;
         default:
@@ -116,6 +121,14 @@ public class Main {
     System.out.println("id d'abonnement");
     String abonnementId = scanner.nextLine();
     System.out.println(abonnementService.sum(UUID.fromString(abonnementId)));
+  }
+
+  private static void derniersPaiementsUI() {
+    paiementService.derniersPaiements(3).forEach(p -> System.out.println(
+        "Id: " + p.getId() + "\n"
+            + "Date echeance: " + p.getDateEcheance() + "\n"
+            + "Date paiement: " + p.getDatePaiement() + "\n"
+            + "Statut: " + p.getPaiementStatut() + "\n"));
   }
 
   private static void addAbonnementUI() {

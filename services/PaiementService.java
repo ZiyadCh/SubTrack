@@ -2,6 +2,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.UUID;
 import java.util.stream.Stream;
 
@@ -16,6 +17,13 @@ public class PaiementService {
         .stream()
         .filter(n -> n.getAbonnementId().equals(
             abonnementId));
+  }
+
+  public Stream<Paiement> derniersPaiements(int n) {
+    return new ArrayList<Paiement>(paiementDao.listAll())
+        .stream()
+        .sorted(Comparator.comparing(Paiement::getDateEcheance).reversed())
+        .limit(n);
   }
 
   public Paiement findById(UUID id) {

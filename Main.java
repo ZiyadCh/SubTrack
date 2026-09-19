@@ -99,8 +99,7 @@ public class Main {
   private static void sumUI() {
     System.out.println("id d'abonnement");
     String abonnementId = scanner.nextLine();
-    paiementService.listPaiements(UUID.fromString(abonnementId));
-
+    System.out.println(abonnementService.sum(UUID.fromString(abonnementId)));
   }
 
   private static void addAbonnementUI() {

@@ -27,6 +27,15 @@ public class AbonnementService {
     return new ArrayList<>(abonnementDao.listAll());
   }
 
+  public Double sum(UUID id) {
+    Abonnement abonnement = abonnementDao.findById(id);
+    if (abonnement == null) {
+      return null;
+    }
+
+    return abonnement.getMontantMesuelle();
+  }
+
   public void supprimerAbonnement(UUID id) {
     abonnementDao.delete(id);
   }

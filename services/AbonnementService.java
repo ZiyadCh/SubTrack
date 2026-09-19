@@ -6,9 +6,11 @@ import java.util.UUID;
 
 import dao.AbonnementDao;
 import models.Abonnement;
+import models.TypePaiement;
 
 public class AbonnementService {
   private static AbonnementDao abonnementDao = new AbonnementDao();
+  private static PaiementService paiementService = new PaiementService();
 
   public Abonnement findById(UUID id) {
     return abonnementDao.findById(id);
@@ -29,11 +31,11 @@ public class AbonnementService {
 
   public Double sum(UUID id) {
     Abonnement abonnement = abonnementDao.findById(id);
-    if (abonnement == null) {
-      return null;
-    }
+    return paiementService.listPaiements(id)
+        .filter(n -> n.getTypePaiement() == TypePaiement.PAYE)
+        .mapToDouble(n -> abonnement.getMontantMesuelle())
+        .sum();
 
-    return abonnement.getMontantMesuelle();
   }
 
   public void supprimerAbonnement(UUID id) {

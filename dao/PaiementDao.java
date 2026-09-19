@@ -4,23 +4,23 @@ import java.util.HashSet;
 import java.util.UUID;
 
 import models.Paiement;
-import models.TypePaiement;
+import models.PaiementStatut;
 
 public class PaiementDao {
   private static final HashSet<Paiement> paiements = new HashSet<>();
 
   static {
     Paiement p1 = new Paiement(
-        UUID.randomUUID(), "2026-02-01", "2026-02-01", TypePaiement.PAYE,
+        UUID.randomUUID(), "2026-02-01", "2026-02-01", PaiementStatut.PAYE,
         UUID.fromString("123e4567-e89b-42d3-a456-556642440000"));
     paiements.add(p1);
 
     Paiement p2 = new Paiement(
-        UUID.randomUUID(), "2026-02-05", "2026-02-09", TypePaiement.RETARD, UUID.randomUUID());
+        UUID.randomUUID(), "2026-02-05", "2026-02-09", PaiementStatut.RETARD, UUID.randomUUID());
     paiements.add(p2);
 
     Paiement p3 = new Paiement(
-        UUID.randomUUID(), "2026-03-05", null, TypePaiement.NONPAYE, UUID.randomUUID());
+        UUID.randomUUID(), "2026-03-05", null, PaiementStatut.NONPAYE, UUID.randomUUID());
     paiements.add(p3);
   }
 

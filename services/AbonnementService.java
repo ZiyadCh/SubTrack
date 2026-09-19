@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import dao.AbonnementDao;
 import models.Abonnement;
-import models.TypePaiement;
+import models.PaiementStatut;
 
 public class AbonnementService {
   private static AbonnementDao abonnementDao = new AbonnementDao();
@@ -32,7 +32,7 @@ public class AbonnementService {
   public Double sum(UUID id) {
     Abonnement abonnement = abonnementDao.findById(id);
     return paiementService.listPaiements(id)
-        .filter(n -> n.getTypePaiement() == TypePaiement.PAYE)
+        .filter(n -> n.getPaiementStatut() == PaiementStatut.PAYE)
         .mapToDouble(n -> abonnement.getMontantMesuelle())
         .sum();
 

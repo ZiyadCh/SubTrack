@@ -6,14 +6,14 @@ public class Paiement {
   protected UUID id;
   protected String dateEcheance;
   protected String datePaiement;
-  protected TypePaiement typePaiement;
+  protected PaiementStatut paiementStatut;
   protected UUID abonnementId;
 
-  public Paiement(UUID id, String dateEcheance, String datePaiement, TypePaiement typePaiement, UUID abonnementId) {
+  public Paiement(UUID id, String dateEcheance, String datePaiement, PaiementStatut paiementStatut, UUID abonnementId) {
     this.id = id;
     this.dateEcheance = dateEcheance;
     this.datePaiement = datePaiement;
-    this.typePaiement = typePaiement;
+    this.paiementStatut = paiementStatut;
     this.abonnementId = abonnementId;
   }
 
@@ -49,11 +49,11 @@ public class Paiement {
     this.datePaiement = datePaiement;
   }
 
-  public TypePaiement getTypePaiement() {
-    return typePaiement;
+  public PaiementStatut getPaiementStatut() {
+    return paiementStatut;
   }
 
-  public void setTypePaiement(TypePaiement typePaiement) {
-    this.typePaiement = typePaiement;
+  public void setPaiementStatut(PaiementStatut paiementStatut) {
+    this.paiementStatut = paiementStatut;
   }
 }

@@ -9,7 +9,7 @@ import models.AbonnementAvecEngagement;
 import models.AbonnementSansEngagement;
 import models.Paiement;
 import models.Statut;
-import models.TypePaiement;
+import models.PaiementStatut;
 import services.AbonnementService;
 import services.PaiementService;
 
@@ -33,7 +33,7 @@ public class Main {
       System.out.println("│7❯ Modifier un Paiement              │");
       System.out.println("│8❯ Supprimer un Paiement             │");
       System.out.println("│9❯ Somme d'un Abonnement             │");
-      System.out.println("│10❯ Quitter                           │");
+      System.out.println("│10❯ Quitter                          │");
       System.out.println("└─────────────────────────────────────┘");
       switch (scanner.nextLine()) {
         case "1":
@@ -67,7 +67,7 @@ public class Main {
               "Id: " + p.getId() + "\n"
                   + "Date echeance: " + p.getDateEcheance() + "\n"
                   + "Date paiement: " + p.getDatePaiement() + "\n"
-                  + "Type paiement: " + p.getTypePaiement() + "\n"));
+                  + "Type paiement: " + p.getPaiementStatut() + "\n"));
           break;
 
         case "6":
@@ -236,10 +236,10 @@ public class Main {
     String datePaiement = scanner.nextLine();
 
     System.out.println("Type de paiement (PAYE, NONPAYE, RETARD):");
-    String typePaiement = scanner.nextLine();
+    String paiementStatut = scanner.nextLine();
 
     Paiement paiement = new Paiement(
-        UUID.randomUUID(), dateEcheance, datePaiement, TypePaiement.valueOf(typePaiement), abonnementId);
+        UUID.randomUUID(), dateEcheance, datePaiement, PaiementStatut.valueOf(paiementStatut), abonnementId);
 
     paiementService.addPaiement(paiement);
   }
@@ -267,9 +267,9 @@ public class Main {
     }
 
     System.out.println("Nouveau type de paiement (PAYE, NONPAYE, RETARD):");
-    String typePaiement = scanner.nextLine();
-    if (!typePaiement.isEmpty()) {
-      paiement.setTypePaiement(TypePaiement.valueOf(typePaiement));
+    String paiementStatut = scanner.nextLine();
+    if (!paiementStatut.isEmpty()) {
+      paiement.setPaiementStatut(PaiementStatut.valueOf(paiementStatut));
     }
 
     // System.out.println("Nouvel id de l'abonnement :");

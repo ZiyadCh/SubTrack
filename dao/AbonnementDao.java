@@ -1,8 +1,10 @@
 package dao;
 
+import java.sql.ResultSet;
 import java.util.HashSet;
 import java.util.UUID;
 
+import db.JdbcConnexion;
 import models.Abonnement;
 import models.AbonnementAvecEngagement;
 import models.AbonnementSansEngagement;
@@ -11,15 +13,7 @@ import models.Statut;
 public class AbonnementDao {
   private static final HashSet<Abonnement> abonnements = new HashSet<>();
 
-  static {
-    abonnements.add(new AbonnementSansEngagement(
-        UUID.fromString("123e4567-e89b-42d3-a456-556642440000"), "Netflix", 15.99, "2026-01-01", "2026-12-31",
-        Statut.ACTIVE));
-    abonnements.add(new AbonnementAvecEngagement(
-        UUID.randomUUID(), "Spotify", 9.99, "2026-01-01", "2026-06-30", Statut.ACTIVE, 12));
-    abonnements.add(new AbonnementSansEngagement(
-        UUID.randomUUID(), "Disney+", 11.99, "2026-03-01", "2026-09-30", Statut.SUSPENDU));
-  }
+  public static ResultSet listofabonnements = JdbcConnexion.abonnementDB();
 
   public void add(Abonnement abonnement) {
     abonnements.add(abonnement);

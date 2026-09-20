@@ -3,6 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.UUID;
 
+import db.JdbcConnexion;
 import exceptions.InvalidInputException;
 import models.Abonnement;
 import models.AbonnementAvecEngagement;
@@ -19,6 +20,8 @@ public class Main {
   public static Scanner scanner = new Scanner(System.in);
 
   public static void main(String[] args) {
+
+    //////////////////////
 
     while (true) {
       System.out.println("┌─────────────────────────────────────┐");
